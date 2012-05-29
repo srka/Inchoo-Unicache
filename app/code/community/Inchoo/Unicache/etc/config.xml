@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Inchoo_Unicache>
+			<version>1.0.0</version>
+		</Inchoo_Unicache>
+	</modules>
+	<global>
+		<blocks>
+			<unicache>
+				<class>Inchoo_Unicache_Block</class>
+			</unicache>
+		</blocks>
+		
+		<models>
+			<unicache>
+				<class>Inchoo_Unicache_Model</class>
+				<resourceModel>unicache_mysql4</resourceModel>
+			</unicache>
+	  		<unicache_mysql4>
+				<class>Inchoo_Unicache_Model_Mysql4</class>
+				<entities>
+					<unicache>
+						<table>unicache</table>
+					</unicache>
+				</entities>
+	        </unicache_mysql4>
+		</models>
+		
+        <resources>
+            <unicache_setup>
+                <setup>
+                    <module>Inchoo_Unicache</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </unicache_setup>
+            <unicache_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </unicache_write>
+            <unicache_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </unicache_read>
+        </resources>
+
+		<helpers>
+			<unicache>
+				<class>Inchoo_Unicache_Helper</class>
+			</unicache>
+		</helpers>
+	</global>
+	
+</config>

@@ -1,0 +1,9 @@
+<?php 
+	$cachedData = Mage::helper('unicache')->readCache($this->getCacheName());
+?>
+
+<?php if($cachedData !== false): ?>
+	<div><?php echo $cachedData ?></div>
+<?php else: ?>
+	<div>No cached data</div>
+<?php endif; ?>
