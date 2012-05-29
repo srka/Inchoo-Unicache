@@ -12,7 +12,6 @@ Features
   * Uses helpers to be more accessible
   * Add, edit or remove cached items at any time with one line of code
   * Check if there is cached data for a specified item name
-  * Check if there is cached data for a specified item name
   * Check if the cached content for a specific item name should be used
   * Get or set only the cached item timeout
   * Intuitive and easy to use
