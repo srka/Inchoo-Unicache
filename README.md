@@ -58,29 +58,29 @@ Available functions
 -------------------
 There are several useful functions included in the extension that you can use to manage your cached data.
 
-Mage::helper('unicache')->hasCache([ITEM-NAME]);<br/>
+<b>Mage::helper('unicache')->hasCache([ITEM-NAME]);</b><br/>
 Check if there is a cached item with the specified [ITEM-NAME]. This function only checks if the cached item exists it does not check if it has expired. Function returns true if there is a cached item with the specified [ITEM-NAME] and false otherwise.
 
-Mage::helper('unicache')->getCacheItem([ITEM-NAME]);<br/>
+<b>Mage::helper('unicache')->getCacheItem([ITEM-NAME]);</b><br/>
 This function will return the collection item for the cached item with the specified [ITEM-NAME]. If there is no cached with the specified name function will return NULL.
 
-Mage::helper('unicache')->cacheExpired([ITEM-NAME]);<br/>
+<b>Mage::helper('unicache')->cacheExpired([ITEM-NAME]);</b><br/>
 Check if cached item with the specified [ITEM-NAME] has expired. Expired time is calculated by adding item timeout to the last updated time. If the expired time is greater than current time the function will return true, otherwise it will return true. If there is no cached item with the specified [ITEM-NAME] the function will return true.
 
-Mage::helper('unicache')->shouldUseCache([ITEM-NAME]);<br/>
+<b>Mage::helper('unicache')->shouldUseCache([ITEM-NAME]);</b><br/>
 Check if you should use the cached content for the specified [ITEM-NAME]. This function checks if the cached item exists and is not expired.
 
-Mage::helper('unicache')->writeCache([ITEM-NAME], [ITEM-CONTENT], [TIMEOUT]);<br/>
+<b>Mage::helper('unicache')->writeCache([ITEM-NAME], [ITEM-CONTENT], [TIMEOUT]);</b><br/>
 This function writes the cached item with the specified [ITEM-NAME]. If there is no item with the specified name function will create a new item, if there is an item with the specified name function will update the content and timeout (if specified) values. [TIMEOUT] argument is optional and has a default value of 24. This function does not return any value.
 
-Mage::helper('unicache')->readCache([ITEM-NAME]);<br/>
+<b>Mage::helper('unicache')->readCache([ITEM-NAME]);</b><br/>
 This function returns the cached content data for the specified [ITEM-NAME]. If the cached item with the specified name exists and is not expired it returns its cached content data, otherwise it returns false.
 
-Mage::helper('unicache')->deleteCache([ITEM-NAME]);<br/>
+<b>Mage::helper('unicache')->deleteCache([ITEM-NAME]);</b><br/>
 This function deletes the cached item with the specified [ITEM-NAME]. In this case [ITEM-NAME] is optional and if left unspecified all the cached items would be deleted (this will effectively clear the entire cache).
 
-Mage::helper('unicache')->cacheTimeout([ITEM-NAME]);<br/>
+<b>Mage::helper('unicache')->cacheTimeout([ITEM-NAME]);</b><br/>
 This function returns the cache timeout from the cached item specified with [ITEM-NAME]. If there is no cached item with the specified name function will return false.
 
-Mage::helper('unicache')->updateCacheTimeout([ITEM-NAME], [TIMEOUT]);<br/>
+<b>Mage::helper('unicache')->updateCacheTimeout([ITEM-NAME], [TIMEOUT]);</b><br/>
 This function will update only the cache timeout for the cached item with the specified [ITEM-NAME].
