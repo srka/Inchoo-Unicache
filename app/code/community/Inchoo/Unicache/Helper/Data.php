@@ -68,7 +68,7 @@ class Inchoo_Unicache_Helper_Data extends Mage_Core_Helper_Abstract{
 	}
 	
 	// Delete a cache entery specified by $cache_name
-	public function deleteCache($cache_name){
+	public function deleteCache($cache_name = NULL){
 		if(isset($cache_name) && !empty($cache_name)){
 			$cacheItem = $this->getCacheItem($cache_name);
 			if(isset($cacheItem)) $cacheItem->delete();
