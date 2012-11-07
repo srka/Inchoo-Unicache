@@ -91,6 +91,6 @@ This function will update only the cache timeout for the cached item with the sp
 <b>Mage::helper('unicache')->deleteExpired();</b><br/>
 NEW! This function will delete all the expired cached data (if any) and return a string status message: "Expired cache data deleted." or "There was no expired cache data."
 
-NEW! Corn job for deleting expired cache data
+NEW! Cron job for deleting expired cache data
 -------------------
 I added a cron job that deletes expired cache data every day at midnight. You can disable or change this option in config.xml
