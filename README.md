@@ -1,7 +1,7 @@
 Inchoo-Unicache
 =====================
 
-Inchoo Unicache is an extremely simple and useful little extension that you can use to cache any kind of text/string based data in Magento. It uses helpers to make it accessible from anywhere from template files to your own custom code.
+Inchoo Unicache is an extremely simple and useful little extension that you can use to cache any kind of text/string based data in Magento. It uses helpers to make it accessible from anywhere; from template files to your own custom code.
 
 While making the Inchoo Flicker Gallery extension I needed an easy way of caching the Flickr API responses because the Flickr API servers were somewhat slow and there was no need to make the API request every time user opens the gallery. There were several different API responses that I needed to cache in one database table so I needed a universal solution to cache all of them and that’s how Inchoo Unicache extension was born. 
 
@@ -15,6 +15,10 @@ Features
   * Check if the cached content for a specific item name should be used
   * Get or set only the cached item timeout
   * Intuitive and easy to use
+  * NEW! Admin grid listing all the cached data
+  * NEW! "Clear Cache" button in admin grid
+  * NEW! "Delete Expired" button in admin grid and helper function
+  * NEW! Cron job for deleting expired cache data (turned on by default!)
 
 
 How to install?
@@ -83,3 +87,10 @@ This function returns the cache timeout from the cached item specified with [ITE
 
 <b>Mage::helper('unicache')->updateCacheTimeout([ITEM-NAME], [TIMEOUT]);</b><br/>
 This function will update only the cache timeout for the cached item with the specified [ITEM-NAME].
+
+<b>Mage::helper('unicache')->deleteExpired();</b><br/>
+NEW! This function will delete all the expired cached data (if any) and return a string status message: "Expired cache data deleted." or "There was no expired cache data."
+
+NEW! Corn job for deleting expired cache data
+-------------------
+I added a cron job that deletes expired cache data every day at midnight. You can disable or change this option in config.xml

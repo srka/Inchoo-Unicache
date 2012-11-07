@@ -3,14 +3,15 @@ class Inchoo_Unicache_Helper_Data extends Mage_Core_Helper_Abstract{
 		
 	// Check if there is a cache entery with the specified $cache_name
 	public function hasCache($cache_name){
-		$cacheCollection = Mage::getModel('unicache/unicache')->getCollection()->addFilter('name', array('eq' => $cache_name));
+	 // $cacheCollection = Mage::getModel('unicache/unicache')->getCollection()->addFilter('name', array('eq' => $cache_name));
+		$cacheCollection = Mage::getModel('unicache/unicache')->getResourceCollection()->addFilter('name', array('eq' => $cache_name));
 		return ($cacheCollection->count() > 0) ? $cacheCollection->getFirstItem()->getUnicacheId() : false;
 	}
 	
 	// Get the cache collection item with the specified $cache_name
 	public function getCacheItem($cache_name){
 		if($this->hasCache($cache_name)){
-			$cacheCollection = Mage::getModel('unicache/unicache')->getCollection()->addFilter('name', array('eq' => $cache_name));
+			$cacheCollection = Mage::getModel('unicache/unicache')->getResourceCollection()->addFilter('name', array('eq' => $cache_name));
 			return $cacheCollection->getFirstItem();
 		}else{
 			return NULL;
@@ -73,7 +74,7 @@ class Inchoo_Unicache_Helper_Data extends Mage_Core_Helper_Abstract{
 			$cacheItem = $this->getCacheItem($cache_name);
 			if(isset($cacheItem)) $cacheItem->delete();
 		}else{
-			$cacheData = Mage::getModel('unicache/unicache')->getCollection();
+			$cacheData = Mage::getModel('unicache/unicache')->getResourceCollection();
 			foreach($cacheData as $cacheItem){
 				$cacheItem->delete();
 			}
@@ -90,6 +91,23 @@ class Inchoo_Unicache_Helper_Data extends Mage_Core_Helper_Abstract{
 	public function updateCacheTimeout($cache_name, $cache_timeout){
 		$cacheItem = $this->getCacheItem($cache_name);
 		if(isset($cacheItem)) $cacheItem->setCacheTimeout($cache_timeout)->save();
+	}
+	
+	// Delete expired cache data
+	public function deleteExpired(){
+		$cacheCollection = Mage::getModel('unicache/unicache')->getCollection();
+		$message = '';
+		foreach($cacheCollection as $cacheItem){
+			if($this->cacheExpired($cacheItem->getName())){
+				$this->deleteCache($cacheItem->getName());
+				$message = $this->__('Expired cache data deleted.');
+			}
+		}
+		if(empty($message)){
+			$message = $this->__('There was no expired cache data.');
+		}
+		
+		return $message;
 	}
 	
 }

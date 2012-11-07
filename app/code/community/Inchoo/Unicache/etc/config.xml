@@ -55,4 +55,50 @@
 		</helpers>
 	</global>
 	
+    <admin>
+        <routers>
+			<unicache>
+				<use>admin</use>
+				<args>
+					<module>Inchoo_Unicache</module>
+					<frontName>unicache</frontName>
+				</args>
+			</unicache>
+        </routers>
+    </admin>
+	
+  	<adminhtml>
+        <menu>
+            <unicache module="unicache">
+                <title>Inchoo Unicache</title>
+                <sort_order>71</sort_order>               
+				<action>unicache/adminhtml_unicache</action>
+            </unicache>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <unicache module="unicache">
+                            <title>Unicache</title>
+                            <sort_order>200</sort_order>
+                        </unicache>
+                    </children>
+                </admin>
+            </resources>   
+        </acl>
+    </adminhtml>
+	
+	<crontab>
+	    <jobs>
+	        <inchoo_unicache_delete_expired>
+	            <schedule><cron_expr>0 0 * * *</cron_expr></schedule>
+	            <run><model>unicache/observer::deleteExpired</model></run>
+	        </inchoo_unicache_delete_expired>
+	    </jobs>
+	</crontab>
+	
 </config>
