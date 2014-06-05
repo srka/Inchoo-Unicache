@@ -25,6 +25,7 @@ class Inchoo_Unicache_Adminhtml_UnicacheController extends Mage_Adminhtml_Contro
         $this->getResponse()->setBody(
                $this->getLayout()->createBlock('unicache/adminhtml_unicache_grid')->toHtml()
         );
+		$this->_redirect('*/*');
     }
 	
 	public function clearAction(){
